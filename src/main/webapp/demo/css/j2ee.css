@@ -1,0 +1,111 @@
+* {
+	font-size:0.9rem;
+	line-height: 1.3;
+	margin: 0px auto;
+}
+
+a {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	text-align: left;
+	padding: 5px 0px;
+	box-sizing: border-box;
+}
+
+h6 {
+	font-size:1rem
+}
+
+h5 {
+	font-size: 1.1rem;
+}
+
+h4 {
+	font-size: 1.2rem;
+}
+
+h3 {
+	font-size: 1.3rem;
+}
+
+h2 {
+	font-size: 1.4rem;
+}
+
+h1 {
+	font-size: 1.5rem;
+}
+
+iframe {
+	width:100%;
+	height: 100%;
+	border-width: 0px;
+}
+
+[type="checkbox"],[type="radio"] {
+	height:16px;
+	width:16px;
+	vertical-align:middle;
+	margin-right: 2px;
+}
+
+.padding2 {
+	padding: 2px;
+}
+
+.fixed-bottom {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: 99;
+}
+
+.redSpan {
+	color:rgb(255,0,0);
+	margin-right: 5px;
+}
+
+.colorWhite {
+	color:rgb(255,255,255);
+}
+
+.colorGreen {
+	color:rgb(16,200,63);
+}
+
+.colorRed {
+	color:rgb(255,0,0);
+}
+
+.colorGrey,.colorGray {
+	color:rgb(122,122,122);
+}
+
+.colorBlack {
+	color:rgb(0,0,0);
+}
+
+.colorYellow {
+	color:yellow;
+}
+
+.clear{
+	clear: both;
+}
+
+.left {
+	float:left;
+}
+
+.right {
+	float:right;
+}
+
+.autoOverflow {
+	overflow: auto; 
+}
+

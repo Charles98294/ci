@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration   
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- 是否打印SQL语句， STDOUT_LOGGING NO_LOGGING -->
+		<setting name="logImpl" value="STDOUT_LOGGING" />
+
+		<!-- 是否同意使用二级缓存，默认true -->
+		<setting name="cacheEnabled" value="true" />
+		
+		<!-- 同意使用延迟加载，默认是false -->
+		<setting name="lazyLoadingEnabled" value="true"/>
+		<!-- 使用延迟加载（将延迟加载变成为按需加载） -->
+		<setting name="aggressiveLazyLoading" value="false"/>
+	</settings>
+</configuration>

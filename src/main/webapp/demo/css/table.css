@@ -1,0 +1,90 @@
+pre {
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+#centerDiv {
+	height:95%;
+	margin-top: 5px;
+}
+
+#contentDiv {
+	border-width:1px;
+	border-radius : 12px;
+	border-style: solid;
+	width:420px;
+	height : 99%;
+	text-align: left;
+	overflow-y:  auto;
+	float: left;
+	font-size:14px;
+	padding-top:7px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#rightTableDiv {
+	height:100%;
+	position: absolute;
+	left: 450px;
+	right:3px;
+}
+
+/* 表格样式  */
+.div-table {
+	width:100%;
+	min-width: 600px;
+	overflow-x: auto; 
+}
+
+.nav-bottom {
+	text-align: center;
+	padding: 5px;
+}
+
+.form-title {
+	width:120px;
+	display: inline-block;
+	padding: 1px;
+	text-align: right;
+}
+
+.form-column {
+	text-align:left;
+	display: inline-block;
+	padding: 1px;
+	width:20%;
+	box-sizing: border-box;
+}
+
+/* 占整行的列  */
+.form-row {
+	text-align:center;
+	padding: 1px;
+	display: block;
+	width: 100%;
+}
+
+@media screen and (max-width: 1440px) {	
+	.form-column {
+		width:25%;
+	}
+}
+
+@media screen and (max-width: 1200px) {	
+	.form-column {
+		width:33%;
+	}
+}
+
+@media screen and (max-width: 830px) {	
+	.form-column {
+		width:50%;
+	}
+}
+
+@media screen and (max-width: 560px) {	
+	.form-column {
+		width:100%;
+	}
+}

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.ssm.ci.demo.DemoDao">
+
+	<resultMap type="java.util.HashMap" id="rowMap">
+		<result column="iId" property="iId"/>
+		<result column="sName" property="sName"/>
+		<result column="sRemark" property="sRemark"/>
+	</resultMap>
+
+	<sql id="whereCondition">
+		<if test="null != iId and iId neq '' ">
+			 and iId = #{iId}
+		</if>
+		<if test="null != sName and sName neq '' ">
+			 and sName like concat('%',#{sName},'%')
+		</if>
+		<if test="null != sRemark and sRemark neq '' ">
+			 and sRemark like concat('%',#{sRemark},'%')
+		</if>
+	</sql>
+
+	<select id="queryList" resultType="java.util.HashMap">
+		select
+			*
+		from tDemo
+		<!-- <where>
+			<include refid="whereCondition"></include>
+		</where> -->
+		<!-- limit #{begin_row},#{rows} -->
+	</select>
+
+	<select id="queryCount" resultType="int">
+		select count(1) from tDemo t
+		<!-- <where>
+			<include refid="whereCondition"></include>
+		</where> -->
+	</select>
+
+	<select id="queryRow" resultType="java.util.HashMap">
+		select
+			t.iId,t.sName,t.sRemark
+		where iId = #{iId}
+		from tDemo t
+		<where>
+			<include refid="whereCondition"></include>
+		</where>
+	</select>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="iId">
+		insert into tDemo
+		<trim suffixOverrides="," prefix="(" suffix=")">
+			<if test="null != sName and sName neq '' ">
+				sName,
+			</if>
+			<if test="null != sRemark and sRemark neq '' ">
+				sRemark,
+			</if>
+		</trim>
+		<trim suffixOverrides="," prefix=" values (" suffix=")">
+			<if test="null != sName and sName neq '' ">
+				#{sName},
+			</if>
+			<if test="null != sRemark and sRemark neq '' ">
+				#{sRemark},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="update">
+		update tDemo
+		<set>
+		<if test="sName != null and sName neq '' ">
+			sName = #{sName},
+		</if>
+		<if test="sRemark != null and sRemark neq '' ">
+			sRemark = #{sRemark},
+		</if>
+		</set>
+		where iId = #{iId}
+	</update>
+
+	<delete id="delete">
+		delete from tDemo where iId = #{iId}
+	</delete>
+</mapper>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Demo列表</title>
+</head>
+<body>
+	<table id="app">
+		<tr>
+			<th>编码</th>
+			<th>姓名</th>
+			<th>备注</th>
+		</tr>
+		<tr v-for="item in result_data">
+			<td>{{ item.iId  }}</td>
+      <td>{{ item.sName  }}</td>
+      <td>{{ item.sRemark  }}</td>
+		</tr>
+	</table>
+</body>
+	<script type="text/javascript" src="../../js/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="../../js/vue.min.js"></script>
+	<script type="text/javascript" src="../../js/ci.js"></script>
+	<script type="text/javascript">
+	
+	var v1 = new Vue({
+		el: '#app',
+		data: {result_data:[]}
+	});
+		
+	$.ajax({
+		dataType :"json",//返回数据类型
+		async : false,
+		url:  http_server + "demo/queryList.action",
+		type:"post",
+	  success:function(resultData){
+		  if (resultData.status > 0) {
+		  	v1.result_data = resultData.result_data;
+		  } else {
+			  alert(resultData.msg);
+		  }
+	  },
+	  error:function() {
+		  alert("发生网络错误");
+	  }
+	});
+
+		
+
+
+	</script>
+</html>

@@ -1,0 +1,87 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/j2ee.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/table.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/theme/base.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/theme/append.css">
+<link rel="stylesheet" type="text/css" id="themeCss">
+<title>${title}</title>
+</head>
+<body class="autoOverflow">
+	<main>
+	<h6>查询条件</h6>
+	${form}
+	<h6>结果列表</h6>
+	${table}
+	<div>
+		<a href="javascript:doPage(1)">首页</a>
+		<a href="javascript:doPage(${page - 1})">上一页</a>
+		<span>第${page }/${totalPage }页 共${count }行数据</span>
+		<a href="javascript:doPage(${page + 1})">下一页</a>
+		<a href="javascript:doPage(${totalPage})">末页</a>
+	</div>
+	</main>
+</body>
+<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/theme.js"></script>
+<script type="text/javascript">
+	function doPage(page) {
+		if (page <= 0) {
+			return;
+		}
+		if (page > "${totalPage}") {
+			return;
+		}
+		$("#pageHidden").val(page);
+		document.getElementById("queryForm").submit();
+	}
+	
+	function doDelete(id) {
+		if (confirm("确认删除此项数据吗？")) {
+			window.location="${pageContext.request.contextPath}/${actionName}/delete.action?id=" + id;
+		} 
+	}
+	
+	function doLoad() {
+		var msg = "${param.msg}";
+		if ("" == msg) {
+			msg = "${msg}";	
+		}
+		if (msg != "" && msg != "true") {
+			alert(msg);
+		}
+	}
+	
+	function doSort(order) {
+		if ("" == order || null == order) {
+			return;
+		}
+		var orderOld = $("#orderHidden").val();
+		var orderType = "desc";
+		if (orderOld.indexOf(" ") != -1) {
+			var a = orderOld.split(" ",2);
+			orderOld = a[0];
+			orderType = a[1];
+		}
+		if (orderType == "desc") {
+			orderType = "asc";
+		} else {
+			orderType = "desc"
+		}
+		if (orderOld == order) {
+			$("#orderHidden").val(order + " " + orderType);
+		} else {
+			$("#orderHidden").val(order + " " + orderType);
+		}
+		document.getElementById("queryForm").submit();
+	}
+	
+	doLoad();
+</script>
+</html>
